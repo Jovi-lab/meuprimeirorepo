@@ -3,7 +3,7 @@ document.getElementById('agendamentoForm').onsubmit = function(event) {
     const procedimento = document.getElementById('procedimento').value;
     const data = document.getElementById('data').value;
     const nome = document.getElementById('nome').value;
-    const numeroWhatsApp = "SEU_NUMERO_AQUI"; // Exemplo: 5599999999999
+    const numeroWhatsApp = "5544996680702"; // Exemplo: 5599999999999
 
     if (!procedimento || !data || !nome) {
         alert("Preencha todos os campos!");
