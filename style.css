@@ -1,162 +1,140 @@
-/* Fundo */
-body {
-    background: url('https://images.unsplash.com/photo-1619454016518-697bc231e8d3?w=1600&q=80') no-repeat center center fixed !important;
-    background-size: cover !important;
-    font-family: 'Montserrat', Arial, sans-serif;
+/* Definição de Cores e Fonte */
+:root {
+    --cor-primaria: #ff69b4; /* Rosa Choque / Pink (típico de beleza) */
+    --cor-secundaria: #34495e; /* Azul Escuro (para textos) */
+    --cor-fundo: #f8f9fa; /* Fundo Claro */
+    --sombra-leve: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset Básico e Tipografia */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-secundaria);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 20px;
 }
 
-/* Container */
+/* Container Principal */
 .container {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(6px);
-    max-width: 400px;
-    width: 90%;
-    border-radius: 20px;
-    box-shadow: 0 8px 32px #0003;
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Título */
-h1 {
-    text-align: center;
-    color: #b25d7a;
-    font-size: 1.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-}
-
-/* Cards */
-.servicos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 16px;
-    margin: 25px 0;
-}
-
-.card {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 10px rgba(178, 93, 122, 0.2);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    overflow: hidden;
-    border: 2px solid transparent;
-}
-
-.card img {
     width: 100%;
-    height: 100px;
+    max-width: 450px; /* Limita a largura do conteúdo */
+    text-align: center;
+}
+
+/* Estilo do Header */
+.header {
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 80px; /* Ajuste o tamanho da logo */
+    height: 80px;
+    border-radius: 50%;
     object-fit: cover;
+    margin-bottom: 10px;
+    /* Se a imagem de fundo falhar, use uma cor de fundo ou borda */
+    border: 3px solid var(--cor-primaria); 
 }
 
-.card h3 {
-    margin: 8px 0 0;
-    color: #8c4461;
-    font-size: 1rem;
+h1 {
+    color: var(--cor-primaria);
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
-.card p {
-    margin: 4px 0 12px;
-    font-weight: bold;
-    color: #b25d7a;
+/* Estilo do Card de Agendamento */
+.card-agendamento {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--sombra-leve);
+    text-align: left;
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 16px rgba(178, 93, 122, 0.3);
+/* Estilo dos Grupos de Formulário */
+.form-group {
+    margin-bottom: 20px;
 }
 
-.card.selected {
-    border-color: #b25d7a;
-    transform: scale(1.05);
-}
-
-/* Formulário */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-top: 15px;
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
     font-weight: 600;
-    color: #7d3f56;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    font-size: 0.95em;
 }
 
-input, select {
+/* Estilo dos Inputs e Select */
+input[type="text"], 
+input[type="tel"], 
+input[type="datetime-local"], 
+select {
     width: 100%;
-    padding: 10px 12px;
-    border: 1.5px solid #e0b8c2;
-    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, 
+input[type="tel"]:focus, 
+input[type="datetime-local"]:focus, 
+select:focus {
+    border-color: var(--cor-primaria);
     outline: none;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-input:focus, select:focus {
-    border-color: #b25d7a;
-    box-shadow: 0 0 0 3px #b25d7a33;
-}
-
-/* Botão */
-button {
-    margin-top: 25px;
-    background: linear-gradient(90deg, #b25d7a, #fda085);
-    border: none;
-    border-radius: 12px;
-    padding: 14px 0;
+/* Estilo do Botão de Envio */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--cor-primaria);
     color: white;
-    font-size: 1.1rem;
-    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(178, 93, 122, 0.4);
-}
-
-button:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(90deg, #fda085, #b25d7a);
-}
-
-/* Mensagem */
-.status-msg {
-    text-align: center;
-    font-size: 0.9rem;
+    transition: background-color 0.3s, transform 0.1s;
     margin-top: 10px;
-    color: #6a3b52;
-    opacity: 0;
-    transition: opacity 0.4s ease;
 }
 
-.status-msg.show {
-    opacity: 1;
+.btn-submit:hover {
+    background-color: #e04a98; /* Um tom um pouco mais escuro */
+    transform: translateY(-1px);
 }
 
-/* Animação */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Mensagem de Feedback */
+.mensagem-oculta {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: none; /* Inicia oculto */
 }
 
-@media (max-width: 500px) {
-    .container {
-        padding: 25px 18px;
-    }
-    h1 {
-        font-size: 1.4rem;
-    }
+/* Mensagens de Sucesso e Erro (para o JS) */
+.mensagem-sucesso {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block !important;
+}
+
+.mensagem-erro {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block !important;
 }
