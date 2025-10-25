@@ -6,81 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            font-family: 'Montserrat', Arial, sans-serif;
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container {
-            background: #fff;
-            max-width: 400px;
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px #0003;
-            padding: 40px 30px 32px 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        h1 {
-            color: #b25d7a;
-            font-size: 2rem;
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-        label {
-            color: #9f5c7d;
-            margin-top: 18px;
-            margin-bottom: 4px;
-            font-weight: 600;
-            width: 100%;
-            text-align: left;
-        }
-        select, input[type="date"], input[type="text"] {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 8px;
-            border: 1.5px solid #e0b8c2;
-            margin-bottom: 4px;
-            outline: none;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        select:focus, input:focus {
-            border-color: #b25d7a;
-        }
-        button {
-            width: 100%;
-            margin-top: 32px;
-            padding: 14px 0;
-            background: linear-gradient(90deg, #b25d7a 0%, #fda085 100%);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            box-shadow: 0 2px 8px #b25d7a33;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-        }
-        button:hover {
-            background: linear-gradient(90deg, #fda085 0%, #b25d7a 100%);
-            transform: translateY(-2px) scale(1.03);
-        }
-        @media (max-width: 500px) {
-            .container {
-                padding: 18px 8px 20px 8px;
-            }
-            h1 {
-                font-size: 1.3rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -103,25 +29,6 @@
             <button type="submit">Agendar via WhatsApp</button>
         </form>
     </div>
-
-    <script>
-        document.getElementById('agendamentoForm').onsubmit = function(event) {
-            event.preventDefault();
-            const procedimento = document.getElementById('procedimento').value;
-            const data = document.getElementById('data').value;
-            const nome = document.getElementById('nome').value;
-            const numeroWhatsApp = "SEU_NUMERO_AQUI"; // Exemplo: 5599999999999
-
-            if (!procedimento || !data || !nome) {
-                alert("Preencha todos os campos!");
-                return;
-            }
-
-            const dataFormatada = data.split('-').reverse().join('/');
-            const mensagem = `Olá, meu nome é ${nome}. Gostaria de agendar: ${procedimento} para o dia ${dataFormatada}.`;
-            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-            window.open(url, "_blank");
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
