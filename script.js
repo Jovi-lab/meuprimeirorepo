@@ -1,17 +1,42 @@
-document.getElementById('agendamentoForm').onsubmit = function(event) {
-    event.preventDefault();
-    const procedimento = document.getElementById('procedimento').value;
-    const data = document.getElementById('data').value;
-    const nome = document.getElementById('nome').value;
-    const numeroWhatsApp = "5544996680702"; // Exemplo: 5599999999999
+const cards = document.querySelectorAll('.card');
+let servicoSelecionado = "";
 
-    if (!procedimento || !data || !nome) {
-        alert("Preencha todos os campos!");
-        return;
-    }
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    servicoSelecionado = card.dataset.servico;
+  });
+});
 
-    const dataFormatada = data.split('-').reverse().join('/');
-    const mensagem = `Olá, meu nome é ${nome}. Gostaria de agendar: ${procedimento} para o dia ${dataFormatada}.`;
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+document.getElementById('agendamentoForm').onsubmit = function (e) {
+  e.preventDefault();
+  
+  const data = document.getElementById('data').value;
+  const horario = document.getElementById('horario').value;
+  const nome = document.getElementById('nome').value;
+  const statusMsg = document.getElementById('mensagem-status');
+  const numeroWhatsApp = "5544996680702";
+
+  if (!servicoSelecionado) {
+    alert("Selecione um serviço primeiro!");
+    return;
+  }
+  if (!data || !horario || !nome) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  const dataFormatada = data.split('-').reverse().join('/');
+  const mensagem = `Olá! Meu nome é ${nome}. Gostaria de agendar ${servicoSelecionado} para o dia ${dataFormatada}, às ${horario}.`;
+  const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
+  statusMsg.textContent = "Abrindo o WhatsApp...";
+  statusMsg.classList.add("show");
+
+  setTimeout(() => {
     window.open(url, "_blank");
-}
+    statusMsg.textContent = "Mensagem enviada ✅";
+    setTimeout(() => statusMsg.classList.remove("show"), 2500);
+  }, 900);
+};
