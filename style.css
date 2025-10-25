@@ -1,14 +1,15 @@
 /* === Fundo === */
 body {
-  font-family: 'Montserrat', Arial, sans-serif;
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow-x: hidden;
-  color: #333;
+    background: url('https://images.unsplash.com/photo-1619454016518-697bc231e8d3?w=1600&q=80') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 .background {
   background: url('https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
@@ -20,15 +21,18 @@ body {
 
 /* === Container === */
 .container {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  width: 90%;
-  max-width: 480px;
-  border-radius: 24px;
-  padding: 40px 30px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  animation: fadeInUp 1s ease;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(6px);
+    max-width: 400px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px #0003;
+    padding: 40px 30px 32px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 
 /* === Título === */
 h1 {
