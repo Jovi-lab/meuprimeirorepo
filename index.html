@@ -1,34 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Agenda de Sobrancelhas</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Agenda de Sobrancelhas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Agende seu horário</h1>
-        <form id="agendamentoForm">
-            <label for="procedimento">Procedimento</label>
-            <select id="procedimento" required>
-                <option value="">Selecione...</option>
-                <option value="Design de sobrancelha - R$40">Design de sobrancelha - R$40</option>
-                <option value="Henna - R$30">Henna - R$30</option>
-                <option value="Design + Henna - R$60">Design + Henna - R$60</option>
-            </select>
+  <div class="background"></div>
 
-            <label for="data">Data</label>
-            <input type="date" id="data" required>
-
-            <label for="nome">Seu nome</label>
-            <input type="text" id="nome" required>
-
-            <button type="submit">Agendar via WhatsApp</button>
-        </form>
+  <div class="container">
+    <h1><i class="fa-solid fa-spa"></i> Agende seu horário</h1>
+    
+    <!-- ETAPA 1 - Escolher serviço -->
+    <div class="servicos">
+      <div class="card" data-servico="Design de sobrancelha - R$40">
+        <img src="img/design.jpg" alt="Design de Sobrancelha">
+        <h3>Design de Sobrancelha</h3>
+        <p>R$40</p>
+      </div>
+      <div class="card" data-servico="Henna - R$30">
+        <img src="img/henna.jpg" alt="Henna">
+        <h3>Henna</h3>
+        <p>R$30</p>
+      </div>
+      <div class="card" data-servico="Design + Henna - R$60">
+        <img src="img/combo.jpg" alt="Design + Henna">
+        <h3>Design + Henna</h3>
+        <p>R$60</p>
+      </div>
     </div>
-    <script src="script.js"></script>
+
+    <!-- ETAPA 2 - Formulário -->
+    <form id="agendamentoForm">
+      <label for="data"><i class="fa-solid fa-calendar-days"></i> Data</label>
+      <input type="date" id="data" required>
+
+      <label for="horario"><i class="fa-solid fa-clock"></i> Horário</label>
+      <select id="horario" required>
+        <option value="">Selecione...</option>
+        <option>09:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+      </select>
+
+      <label for="nome"><i class="fa-solid fa-user"></i> Seu nome</label>
+      <input type="text" id="nome" placeholder="Digite seu nome..." required>
+
+      <button type="submit">
+        <i class="fa-brands fa-whatsapp"></i> Agendar via WhatsApp
+      </button>
+
+      <p id="mensagem-status" class="status-msg"></p>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
