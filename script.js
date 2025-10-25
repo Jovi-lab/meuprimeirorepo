@@ -1,42 +1,71 @@
-const cards = document.querySelectorAll('.card');
-let servicoSelecionado = "";
+document.getElementById('formAgendamento').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
 
-cards.forEach(card => {
-  card.addEventListener('click', () => {
-    cards.forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
-    servicoSelecionado = card.dataset.servico;
-  });
+    const nome = document.getElementById('nome').value.trim();
+    const servico = document.getElementById('servico').value;
+    const dataHoraInput = document.getElementById('dataHora').value;
+    const telefone = document.getElementById('telefone').value.trim();
+    const mensagemDiv = document.getElementById('mensagem');
+
+    // 1. Limpar mensagens anteriores
+    mensagemDiv.textContent = '';
+    mensagemDiv.className = 'mensagem-oculta';
+
+    // 2. Validação básica de campos
+    if (!nome || !servico || !dataHoraInput || !telefone) {
+        exibirMensagem('Por favor, preencha todos os campos do formulário.', 'erro');
+        return;
+    }
+
+    // 3. Validação de Data e Hora (Novo campo datetime-local)
+    const dataAgendamento = new Date(dataHoraInput);
+    const agora = new Date();
+
+    // Remove segundos e milissegundos para comparação mais limpa
+    agora.setSeconds(0, 0); 
+    dataAgendamento.setSeconds(0, 0);
+
+    if (dataAgendamento <= agora) {
+        exibirMensagem('A data e hora do agendamento deve ser futura. Por favor, escolha um horário válido.', 'erro');
+        return;
+    }
+
+    // 4. Se todas as validações passarem
+    
+    // Formatação da mensagem de sucesso
+    const dataFormatada = dataAgendamento.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+    const horaFormatada = dataAgendamento.toLocaleTimeString('pt-BR', {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    const mensagemSucesso = `
+        Agendamento realizado com sucesso!
+        Cliente: ${nome}. 
+        Serviço: ${servico}. 
+        Data: ${dataFormatada} às ${horaFormatada}.
+        Aguarde o contato pelo telefone: ${telefone}.
+    `;
+
+    exibirMensagem(mensagemSucesso, 'sucesso');
+    
+    // Limpar o formulário após o sucesso (opcional)
+    document.getElementById('formAgendamento').reset();
 });
 
-document.getElementById('agendamentoForm').onsubmit = function (e) {
-  e.preventDefault();
-  
-  const data = document.getElementById('data').value;
-  const horario = document.getElementById('horario').value;
-  const nome = document.getElementById('nome').value;
-  const statusMsg = document.getElementById('mensagem-status');
-  const numeroWhatsApp = "5544996680702";
-
-  if (!servicoSelecionado) {
-    alert("Selecione um serviço primeiro!");
-    return;
-  }
-  if (!data || !horario || !nome) {
-    alert("Preencha todos os campos!");
-    return;
-  }
-
-  const dataFormatada = data.split('-').reverse().join('/');
-  const mensagem = `Olá! Meu nome é ${nome}. Gostaria de agendar ${servicoSelecionado} para o dia ${dataFormatada}, às ${horario}.`;
-  const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-
-  statusMsg.textContent = "Abrindo o WhatsApp...";
-  statusMsg.classList.add("show");
-
-  setTimeout(() => {
-    window.open(url, "_blank");
-    statusMsg.textContent = "Mensagem enviada ✅";
-    setTimeout(() => statusMsg.classList.remove("show"), 2500);
-  }, 900);
-};
+/**
+ * Função para exibir mensagens de feedback ao usuário
+ * @param {string} texto - O texto da mensagem.
+ * @param {string} tipo - 'sucesso' ou 'erro'.
+ */
+function exibirMensagem(texto, tipo) {
+    const mensagemDiv = document.getElementById('mensagem');
+    mensagemDiv.textContent = texto;
+    // Adiciona a classe de estilo apropriada
+    mensagemDiv.classList.remove('mensagem-sucesso', 'mensagem-erro');
+    mensagemDiv.classList.add(`mensagem-${tipo}`);
+}
