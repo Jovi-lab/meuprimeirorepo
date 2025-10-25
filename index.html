@@ -4,36 +4,33 @@
   <meta charset="UTF-8">
   <title>Agenda de Sobrancelhas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="background"></div>
-
   <div class="container">
     <h1><i class="fa-solid fa-spa"></i> Agende seu horário</h1>
     
-    <!-- ETAPA 1 - Escolher serviço -->
     <div class="servicos">
       <div class="card" data-servico="Design de sobrancelha - R$40">
-        <img src="img/design.jpg" alt="Design de Sobrancelha">
+        <img src="https://images.unsplash.com/photo-1600769893744-6a9b9a564e9e?w=800&q=80" alt="Design de Sobrancelha">
         <h3>Design de Sobrancelha</h3>
         <p>R$40</p>
       </div>
       <div class="card" data-servico="Henna - R$30">
-        <img src="img/henna.jpg" alt="Henna">
+        <img src="https://images.unsplash.com/photo-1616394583640-6f3bb2f94d1c?w=800&q=80" alt="Henna">
         <h3>Henna</h3>
         <p>R$30</p>
       </div>
       <div class="card" data-servico="Design + Henna - R$60">
-        <img src="img/combo.jpg" alt="Design + Henna">
+        <img src="https://images.unsplash.com/photo-1616394775871-9d0eeb1c490b?w=800&q=80" alt="Design + Henna">
         <h3>Design + Henna</h3>
         <p>R$60</p>
       </div>
     </div>
 
-    <!-- ETAPA 2 - Formulário -->
     <form id="agendamentoForm">
       <label for="data"><i class="fa-solid fa-calendar-days"></i> Data</label>
       <input type="date" id="data" required>
@@ -60,7 +57,6 @@
       <p id="mensagem-status" class="status-msg"></p>
     </form>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
