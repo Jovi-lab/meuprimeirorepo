@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+      <meta charset="UTF-8">
+    <title>Agenda de Sobrancelhas</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #faf5f8; color: #444; padding: 40px;}
+        .container { max-width: 400px; margin: auto; background: #fff; padding: 32px; border-radius: 8px; box-shadow: 0 2px 8px #0002;}
+        h1 { color: #aa3377; }
+        label { display: block; margin-top: 16px; font-weight: bold; }
+        select, input { width: 100%; padding: 8px; margin-top: 6px; border-radius: 4px; border: 1px solid #ccc;}
+        button { margin-top: 24px; padding: 12px 20px; background: #aa3377; color: #fff; border: none; border-radius: 4px; font-size: 16px; cursor: pointer;}
+        button:hover { background: #882266; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agende seu horário</h1>
+        <form id="agendamentoForm">
+            <label for="procedimento">Procedimento</label>
+            <select id="procedimento" required>
+                <option value="">Selecione...</option>
+                <option value="Design de sobrancelha - R$40">Design de sobrancelha - R$40</option>
+                <option value="Henna - R$30">Henna - R$30</option>
+                <option value="Design + Henna - R$60">Design + Henna - R$60</option>
+            </select>
+
+            <label for="data">Data</label>
+            <input type="date" id="data" required>
+
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" required>
+
+            <button type="submit">Agendar via WhatsApp</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('agendamentoForm').onsubmit = function(event) {
+            event.preventDefault();
+            const procedimento = document.getElementById('procedimento').value;
+            const data = document.getElementById('data').value;
+            const nome = document.getElementById('nome').value;
+            const numeroWhatsApp = "SEU_NUMERO_AQUI"; // Exemplo: 5599999999999
+
+            if (!procedimento || !data || !nome) {
+                alert("Preencha todos os campos!");
+                return;
+            }
+
+            const dataFormatada = data.split('-').reverse().join('/');
+            const mensagem = `Olá, meu nome é ${nome}. Gostaria de agendar: ${procedimento} para o dia ${dataFormatada}.`;
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, "_blank");
+        }
+    </script>
+</body>
+</html>
