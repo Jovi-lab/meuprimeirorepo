@@ -1,34 +1,33 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Agenda de Sobrancelhas</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conciliação Bancária</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>Agende seu horário</h1>
-        <form id="agendamentoForm">
-            <label for="procedimento">Procedimento</label>
-            <select id="procedimento" required>
-                <option value="">Selecione...</option>
-                <option value="Design de sobrancelha - R$40">Design de sobrancelha - R$40</option>
-                <option value="Henna - R$30">Henna - R$30</option>
-                <option value="Design + Henna - R$60">Design + Henna - R$60</option>
-            </select>
+  <div class="container">
+    <img src="https://cdn-icons-png.flaticon.com/512/2920/2920322.png" alt="Ícone bancário" class="icon" />
+    <h1>Conciliação Bancária</h1>
 
-            <label for="data">Data</label>
-            <input type="date" id="data" required>
-
-            <label for="nome">Seu nome</label>
-            <input type="text" id="nome" required>
-
-            <button type="submit">Agendar via WhatsApp</button>
-        </form>
+    <div class="empresa-header">
+      <label for="empresa">Nome da Empresa:</label>
+      <input type="text" id="empresa" />
     </div>
-    <script src="script.js"></script>
+
+    <div id="empresas">
+      <!-- Empresas serão adicionadas aqui -->
+    </div>
+
+    <button id="adicionarEmpresa">➕ Adicionar Empresa</button>
+
+    <p class="total">Total diário da empresa <span id="nomeEmpresa"></span>: R$ <span id="total">0.00</span></p>
+
+    <h2>Fluxo de Caixa (7 dias)</h2>
+    <div id="fluxo"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
